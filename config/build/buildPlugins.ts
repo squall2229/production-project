@@ -22,7 +22,9 @@ export function buildPlugins({
         }),
         ...(isDev && [
             new webpack.HotModuleReplacementPlugin(),
-            new ReactRefreshWebpackPlugin(),
+            new ReactRefreshWebpackPlugin({
+                overlay: false,
+            }),
         ]),
     ];
 }
