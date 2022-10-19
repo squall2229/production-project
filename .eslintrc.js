@@ -43,7 +43,7 @@ module.exports = {
             },
         ],
         "react/jsx-indent": [2, 4],
-        "i18next/no-literal-string": ["error", { markupOnly: true }],
+        "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid"] }],
         indent: [2, 4],
         "no-unused-vars": "off",
         "react/jsx-uses-react": "error",
@@ -69,4 +69,12 @@ module.exports = {
         "react/display-name": "off",
         "no-console": ["error", { allow: ["warn", "error"] }],
     },
+    overrides: [
+      {
+        files: ["**/src/**/*.test.{ts, tsx}"],
+        rules: {
+          "i18next/no-literal-string": "off"
+        }
+      }
+    ]
 };
