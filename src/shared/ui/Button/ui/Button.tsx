@@ -3,27 +3,47 @@ import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Button.module.scss";
 
 export enum ButtonTheme {
-  CLEAR = "clear",
-  OUTLINED = "outline"
+    CLEAR = "clear",
+    OUTLINED = "outline",
+    BACKGROUND = "background",
+    BACKGROUND_INVERTED = "backgroundInverted",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  theme?: ButtonTheme;
+    className?: string;
+    theme?: ButtonTheme;
+    square?: boolean;
+    size?: ButtonSize;
+}
+
+export enum ButtonSize {
+    L = "size_l",
+    M = "size_m",
+    XL = "size_xl",
 }
 
 export const Button: FC<ButtonProps> = ({
-  children,
-  className,
-  theme,
-  ...props
+    children,
+    className,
+    theme,
+    square,
+    size = ButtonSize.M,
+    ...props
 }) => {
-  return (
-    <button
-      {...props}
-      className={classNames(styles.root, {}, [className, styles[theme]])}
-    >
-      {children}
-    </button>
-  );
+    const mods: Record<string, boolean> = {
+        [styles.square]: square,
+    };
+
+    return (
+        <button
+            {...props}
+            className={classNames(styles.root, mods, [
+                className,
+                styles[theme],
+                styles[size],
+            ])}
+        >
+            {children}
+        </button>
+    );
 };
