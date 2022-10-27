@@ -1,36 +1,29 @@
-import { BuildOptions } from './types/config';
-import webpack from "webpack"
-import { buildCssLoader } from './loaders/buildCssLoader';
+import { BuildOptions } from "./types/config";
+import webpack from "webpack";
+import { buildCssLoader } from "./loaders/buildCssLoader";
 
-export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
-  const svgLoader = {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  }
+export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+    };
 
-  const cssLoader = buildCssLoader(isDev)
+    const cssLoader = buildCssLoader(isDev);
 
-  const typescriptLoader =  {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  }
+    const typescriptLoader = {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+    };
 
-  const fileLoader = 
-    {
-      test: /\.(png|jpe?g|gif|woff|woff2)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-        },
-      ],
-    }
-  
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use: [
+            {
+                loader: "file-loader",
+            },
+        ],
+    };
 
-  return [
-    typescriptLoader,
-    cssLoader,
-    svgLoader,
-    fileLoader,
-  ]
+    return [typescriptLoader, cssLoader, svgLoader, fileLoader];
 }
