@@ -4,6 +4,7 @@ import styles from "./Button.module.scss";
 
 export enum ButtonTheme {
   CLEAR = "clear",
+  OUTLINED = "outline"
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,7 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<ButtonProps> = ({
   children,
   className,
-  theme = ButtonTheme.CLEAR,
+  theme,
   ...props
 }) => {
   return (
