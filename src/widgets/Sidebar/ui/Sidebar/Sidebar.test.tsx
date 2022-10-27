@@ -1,18 +1,18 @@
-import {Sidebar} from "./Sidebar"
-import {fireEvent, screen} from "@testing-library/react";
+import { Sidebar } from "./Sidebar";
+import { fireEvent, screen } from "@testing-library/react";
 import { renderWithTranslation } from "shared/lib/tests/renderWithTranslation/renderWithTranslation";
 
 describe("Sidebar", () => {
-  test("render", () => {
-    renderWithTranslation(<Sidebar />)
-    expect(screen.getByTestId("sidebar")).toBeInTheDocument()
-  });
+    test("render", () => {
+        renderWithTranslation(<Sidebar />);
+        expect(screen.getByTestId("sidebar")).toBeInTheDocument();
+    });
 
-  test("toggle", () => {
-    renderWithTranslation(<Sidebar />)
-    const toggleBtn = screen.getByTestId("sidebar-toggle");
-    fireEvent.click(toggleBtn);
+    test("toggle", () => {
+        renderWithTranslation(<Sidebar />);
+        const toggleBtn = screen.getByTestId("sidebar-toggle");
+        fireEvent.click(toggleBtn);
 
-    expect(screen.getByTestId("sidebar")).toHaveClass("collapsed");
-  })
-})
+        expect(screen.getByTestId("sidebar")).toHaveClass("collapsed");
+    });
+});
