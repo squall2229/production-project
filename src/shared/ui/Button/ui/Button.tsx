@@ -4,6 +4,7 @@ import styles from "./Button.module.scss";
 
 export enum ButtonTheme {
     CLEAR = "clear",
+    CLEAR_INVERTED = "clearInverted",
     OUTLINED = "outline",
     BACKGROUND = "background",
     BACKGROUND_INVERTED = "backgroundInverted",
@@ -39,8 +40,8 @@ export const Button: FC<ButtonProps> = ({
             {...props}
             className={classNames(styles.root, mods, [
                 className,
-                styles[theme],
                 styles[size],
+                styles[theme],
             ])}
         >
             {children}

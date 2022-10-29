@@ -22,7 +22,13 @@ module.exports = {
             arrowFunctions: true,
         },
     },
-    plugins: ["react", "@typescript-eslint", "prettier", "i18next"],
+    plugins: [
+        "react",
+        "@typescript-eslint",
+        "prettier",
+        "i18next",
+        "react-hooks",
+    ],
     settings: {
         react: {
             version: "detect",
@@ -36,6 +42,8 @@ module.exports = {
     },
     rules: {
         "@typescript-eslint/no-unused-vars": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
         "prettier/prettier": [
             "error",
             {
