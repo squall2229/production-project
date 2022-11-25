@@ -40,7 +40,12 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     return (
         <div className={classNames(styles.root, {}, [className])}>
             <Text title={t("Форма авторизации")} />
-            {error && <Text theme={TextTheme.ERROR} text={error} />}
+            {error && (
+                <Text
+                    theme={TextTheme.ERROR}
+                    text={t("Вы ввели неверный пароль или логин")}
+                />
+            )}
             <Input
                 placeholder={t("Введите username")}
                 onChange={onChangeUsername}
