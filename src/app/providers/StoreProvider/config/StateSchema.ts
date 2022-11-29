@@ -8,12 +8,14 @@ import {
     ReducersMapObject,
     CombinedState,
 } from "@reduxjs/toolkit";
+import { ProfileSchema } from "entities/Profile";
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
 
     loginForm?: LoginSchema;
+    profile?: ProfileSchema;
 }
 
 export type StateSchemaKeys = keyof StateSchema;

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Button.module.scss";
 
@@ -23,30 +23,33 @@ export enum ButtonSize {
     XL = "size_xl",
 }
 
-export const Button: FC<ButtonProps> = ({
-    children,
-    className,
-    theme,
-    square,
-    disabled,
-    size = ButtonSize.M,
-    ...props
-}) => {
-    const mods: Record<string, boolean> = {
-        [styles.square]: square,
-        [styles.disabled]: disabled,
-    };
+export const Button: FC<ButtonProps> = memo(
+    ({
+        children,
+        className,
+        theme,
+        square,
+        disabled,
+        size = ButtonSize.M,
+        ...props
+    }) => {
+        const mods: Record<string, boolean> = {
+            [styles.square]: square,
+            [styles.disabled]: disabled,
+        };
 
-    return (
-        <button
-            {...props}
-            className={classNames(styles.root, mods, [
-                className,
-                styles[size],
-                styles[theme],
-            ])}
-        >
-            {children}
-        </button>
-    );
-};
+        return (
+            <button
+                {...props}
+                className={classNames(styles.root, mods, [
+                    className,
+                    styles[size],
+                    styles[theme],
+                ])}
+                type="button"
+            >
+                {children}
+            </button>
+        );
+    }
+);

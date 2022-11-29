@@ -8,12 +8,21 @@
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 }
   ],
-  "profile": { "name": "typicode" },
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "123"
     }
-  ]
+  ],
+  "profile": { 
+    "first": "vladislav",
+    "lastname": "chechulin",
+    "age": 33,
+    "currency": "RUB",
+    "city":"Moscow",
+    "country": "Russian",
+    "username": "admin",
+    "avatar": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/99/UP0082-ULUS10566_00-AVAD12FFSQUALL00/0/image"
+  }
 }

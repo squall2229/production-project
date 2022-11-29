@@ -1,8 +1,8 @@
-import { getUserAuthData } from "entities/User";
+import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { classNames as cn } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button";
 import styles from "./Navbar.module.scss";
@@ -11,22 +11,23 @@ interface NavbarProps {
     className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar: FC<NavbarProps> = memo(({ className }) => {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
 
     const onClose = useCallback(() => {
         setIsAuthModal(false);
-    }, [setIsAuthModal]);
+    }, []);
 
     const onOpen = useCallback(() => {
         setIsAuthModal(true);
-    }, [setIsAuthModal]);
+    }, []);
 
     const onLogout = useCallback(() => {
-        setIsAuthModal(true);
-    }, [setIsAuthModal]);
+        dispatch(userActions.logout());
+    }, [dispatch]);
 
     if (authData) {
         return (
@@ -57,4 +58,4 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             )}
         </div>
     );
-};
+});

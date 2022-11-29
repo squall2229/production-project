@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Text.module.scss";
 
@@ -14,14 +14,11 @@ interface TextProps {
     theme?: TextTheme;
 }
 
-export const Text: FC<TextProps> = ({
-    className,
-    text,
-    title,
-    theme = TextTheme.PRIMARY,
-}) => (
-    <div className={classNames(styles.root, {}, [className, styles[theme]])}>
-        {title && <p className={styles.title}>{title}</p>}
-        {text && <p className={styles.text}>{text}</p>}
-    </div>
+export const Text: FC<TextProps> = memo(
+    ({ className, text, title, theme = TextTheme.PRIMARY }) => (
+        <div className={classNames("", {}, [className])}>
+            {title && <p className={styles.title}>{title}</p>}
+            {text && <p className={styles.text}>{text}</p>}
+        </div>
+    )
 );
