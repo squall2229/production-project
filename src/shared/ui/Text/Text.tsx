@@ -16,7 +16,7 @@ interface TextProps {
 
 export const Text: FC<TextProps> = memo(
     ({ className, text, title, theme = TextTheme.PRIMARY }) => (
-        <div className={classNames("", {}, [className])}>
+        <div className={classNames("", {}, [className, styles[theme]])}>
             {title && <p className={styles.title}>{title}</p>}
             {text && <p className={styles.text}>{text}</p>}
         </div>
