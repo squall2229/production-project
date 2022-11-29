@@ -9,6 +9,10 @@ module.exports = {
         "plugin:storybook/recommended",
     ],
     parser: "@typescript-eslint/parser",
+    globals: {
+        __IS_DEV: true,
+        __API__: true,
+    },
     env: {
         browser: true,
         es6: true,
