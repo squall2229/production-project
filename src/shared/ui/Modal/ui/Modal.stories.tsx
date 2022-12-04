@@ -25,4 +25,4 @@ Dark.args = {
     isOpen: true,
 };
 
-Dark.decaorator = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

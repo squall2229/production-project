@@ -53,7 +53,7 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
 
             {isAuthModal && (
                 <LoginModal isOpen={isAuthModal} onClose={onClose}>
-                    {t("Modal")}
+                    {t("Модальное окно")}
                 </LoginModal>
             )}
         </div>

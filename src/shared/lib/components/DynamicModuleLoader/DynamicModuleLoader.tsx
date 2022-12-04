@@ -8,8 +8,6 @@ export type ReducerList = Partial<{
     [name in StateSchemaKeys]: Reducer;
 }>;
 
-type ReducersListEntry = [StateSchemaKeys, Reducer];
-
 interface DynamicModuleLoaderProps {
     reducers: ReducerList;
 
@@ -25,21 +23,17 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(
-            ([name, reducer]: ReducersListEntry) => {
-                store.reducerManager.add(name, reducer);
-                dispatch({ type: `@INIT ${name} reducer` });
-            }
-        );
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateSchemaKeys, reducer);
+            dispatch({ type: `@INIT ${name} reducer` });
+        });
 
         return () => {
             if (removeAfterUnmout) {
-                Object.entries(reducers).forEach(
-                    ([name]: ReducersListEntry) => {
-                        store.reducerManager.remove(name);
-                        dispatch({ type: `@DESTROY ${name} reducer` });
-                    }
-                );
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as StateSchemaKeys);
+                    dispatch({ type: `@DESTROY ${name} reducer` });
+                });
             }
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -85,6 +85,7 @@ module.exports = {
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "off",
         "react/display-name": "off",
+        "no-undef": "off",
         "no-console": [
             "error",
             {

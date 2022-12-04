@@ -3,6 +3,7 @@ import {
     FC,
     InputHTMLAttributes,
     memo,
+    MutableRefObject,
     useEffect,
     useRef,
     useState,
@@ -34,7 +35,7 @@ export const Input: FC<InputProps> = memo(
     }) => {
         const [isFocused, setIsFocused] = useState(false);
         const [caretPosition, setCaretPosition] = useState(0);
-        const ref = useRef<HTMLInputElement>();
+        const ref = useRef() as MutableRefObject<HTMLInputElement>;
 
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             onChange?.(e.target.value);

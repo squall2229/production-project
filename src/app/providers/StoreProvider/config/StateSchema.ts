@@ -7,6 +7,7 @@ import {
     Reducer,
     ReducersMapObject,
     CombinedState,
+    Dispatch,
 } from "@reduxjs/toolkit";
 import { ProfileSchema } from "entities/Profile";
 import { AxiosInstance } from "axios";

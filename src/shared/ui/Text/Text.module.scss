@@ -17,3 +17,13 @@
         color: var(--red-dark);
     }
 }
+
+.primary {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--secondary-color);
+    }
+}
